@@ -24,9 +24,9 @@
 #define sync ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define vi vector<int>
 using namespace std;
-
-double frictionFactor(double k, double D, double reynolds, double f){ 
-    return -2*log((k/D)/3.71+2.51/(reynolds*sqrt(f)))-1/sqrt(f); 
+double rugosity, tubeDiameter, reynolds;
+double frictionFactor(double f){ 
+    return -2*log(rugosity/(3.7*tubeDiameter) + 2.51/(reynolds*sqrt(f))) - 1/f;
 } 
 
 
@@ -39,22 +39,28 @@ void bisection(double a, double b, double error){
     double c = a; 
     while ((b-a) >= error) { 
         c = (a+b)/2; 
+        cout<<"actual value of c: "<<c<<endl;
         if (!frictionFactor(c)) break; 
         else if (frictionFactor(c)*frictionFactor(a) < 0) 
             b = c; 
         else
             a = c; 
     } 
-    cout << "K = " << c; 
+    cout << "friction factor = " << c; 
 }
 
 
 int main(){
 sync;
 double charSpeed, tubeDiameter, kinematicSpeed; 
-cin>>charSpeed>>tubeDiameter>>kinematicSpeed;
+cout<<"enter characteristic speed "<<endl;
+cin>>charSpeed;
+cout<<"enter tube diameter "<<endl;
+cin>>tubeDiameter;
+cout<<"enter kinematic speed "<<endl;
+cin>>kinematicSpeed;
 
-double reynolds = charSpeed*tubeDiameter/kinematicSpeed;
+reynolds = charSpeed*tubeDiameter/kinematicSpeed;
 
 int fluxType; //0 for turbulent, 1 for laminar, 2 for transition
 
@@ -64,6 +70,17 @@ if(reynolds>4000){
     fluxType = 1;
 }else{
     fluxType = 2;
+}
+
+if(fluxType == 1){
+    cout<<"friction factor = " << 64/reynolds<<endl;
+}else if(fluxType == 2){
+    cout<<"friction factor is can't be calculated"<<endl;
+}else{
+    cout<<"flux is turbulent, please inputa value for rugosity ";
+    cin>>rugosity;
+    cout<<"friction factor = ";
+    bisection(-1000,1000,0.0);
 }
  
 
