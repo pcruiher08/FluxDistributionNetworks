@@ -40,7 +40,7 @@ ll fastPow(ll a,ll b){
 }
 
 double frictionFactor(double f){ 
-    return 2.0*log((rugosity/internalTubeDiameter)/(3.7) + 2.51/(reynolds*sqrt(f))) + 1/sqrt(f);
+    return -2.0*log10((rugosity/internalTubeDiameter)/(3.7) + 2.51/(reynolds*sqrt(f))) - 1/sqrt(f);
 } 
 
 
@@ -102,23 +102,24 @@ if(fluxType == 1){
     cout<<"Reynolds number of this fluid represents a transition flux which friction factor can't be calculated"<<endl;
 }else if(fluxType == 0){
     cout<<"Reynolds factor represents a turbulent flux, the friction factor of this flux is ";
-    bisection(0.0008,1,0.01);
+    bisection(0.008,1,0.001);
     cout<<endl;
 }
 return 0;
 }
 
 /*
-62.3
-1.5
-0.000839
-0.0004
-15
-
 
 62.3
 1.5
 0.000839
 0.0005
 15
+
+
+62
+0.17225
+0.000671
+0.00015
+0.16312
  */
