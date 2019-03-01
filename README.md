@@ -4,7 +4,7 @@
 
 M.C. Santiago Leonel Pérez García
 
-Manuel Corona Escamilla A01282533__
-Paulina Vázquez Contreras A01282691__
-Marlenne Atta Delgado A00822030__
+Manuel Corona Escamilla A01282533  
+Paulina Vázquez Contreras A01282691  
+Marlenne Atta Delgado A00822030  
 Pablo César Ruíz A01197044
