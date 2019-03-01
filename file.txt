@@ -1,2 +1,2 @@
-Reynolds number is = 3819.72
-Reynolds number of this fluid represents a transition flux which friction factor can't be calculated
+Reynolds number is = 0.353678
+Reynolds number represents a laminar fluid which friction factor is= 180.956
