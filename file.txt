@@ -1,3 +1,2 @@
-Reynolds number is = 61121.6
-Reynolds factor represents a turbulent flux, the friction factor of this flux is 
-non existant with this bounds
+Reynolds number is = 3819.72
+Reynolds number of this fluid represents a transition flux which friction factor can't be calculated
