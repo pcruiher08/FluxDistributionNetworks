@@ -112,6 +112,7 @@ enter rugosity
 0.0005
 enter volumetric flux
 15
+
 Reynolds number is = 945445
 Reynolds factor represents a turbulent flux, the friction factor of this flux is
 0 iteration of c: 0.504
