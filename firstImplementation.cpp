@@ -18,6 +18,10 @@ double frictionFactor(double f){
    return -2.0*log10((rugosity/internalTubeDiameter)/(3.7) + 2.51/(reynolds*sqrt(f))) - 1/sqrt(f);
 }
 
+double darcy(){
+   return 1.325/( log( (1/4.6E5)/(3.7 * 997.9503) + 5.74/(pow(reynolds,0.9)) ) * log( (1/4.6E5)/(3.7 * 997.9503) + 5.74/(pow(reynolds,0.9)) ) );
+}
+
 //funcion de biseccion como vimos en clase, algoritmo simple y optimizado en tiempo y memoria
 void bisection(double a, double b, double error){
    if (frictionFactor(a) * frictionFactor(b) >= 0) {  //parameters missing,.... function must be expressed somehow else
@@ -44,15 +48,15 @@ void bisection(double a, double b, double error){
 
 int main(){
 sync;//se llama al macro sync para leer datos en menor tiempo que la entrada comun, se busca optimizar el tiempo de ejecución del código
-cout<<"enter density "<<endl;
+cout<<"enter density kg(m^-3)"<<endl;
 cin>>density;
-cout<<"enter tube diameter "<<endl;
+cout<<"enter tube diameter m"<<endl;
 cin>>internalTubeDiameter;
-cout<<"enter dynamic viscosity "<<endl;
+cout<<"enter dynamic viscosity poise"<<endl;
 cin>>viscosity;
-cout<<"enter rugosity "<<endl;
+cout<<"enter rugosity m"<<endl;
 cin>>rugosity;
-cout<<"enter volumetric flux "<<endl;
+cout<<"enter volumetric flux m^3s^-1"<<endl;
 cin>>volumetricFlux;
 
 //se calcula la velocidad con base en el area y el flujo
@@ -77,15 +81,19 @@ cout<<"Reynolds number is = "<<reynolds<<endl;
 fout<<"Reynolds number is = "<<reynolds<<endl;
 //se decide como calcular el factor de friccion dependiendo del tipo de flujo
 if(fluxType == 1){
-   cout<<"Reynolds number represents a laminar fluid which friction factor is= " << 64/reynolds<<endl;
-   fout<<"Reynolds number represents a laminar fluid which friction factor is= " << 64/reynolds; fout<<endl;
+   cout<<"Reynolds number represents a laminar fluid which friction factor is = " << 64/reynolds<<endl;
+   fout<<"Reynolds number represents a laminar fluid which friction factor is = " << 64/reynolds; fout<<endl;
+      cout<<"friction factor using darcy: "<<darcy()<<endl;
+         fout<<"friction factor using darcy: "<<darcy()<<endl;
 }else if(fluxType == 2){
    cout<<"Reynolds number of this fluid represents a transition flux which friction factor can't be calculated"<<endl;
    fout<<"Reynolds number of this fluid represents a transition flux which friction factor can't be calculated"; fout<<endl;
 }else if(fluxType == 0){
    cout<<"Reynolds factor represents a turbulent flux, the friction factor of this flux is "; cout<<endl;
+   cout<<"friction factor using darcy: "<<darcy()<<endl;
    fout<<"Reynolds factor represents a turbulent flux, the friction factor of this flux is "; fout<<endl;
-   bisection(0.008,1,0.001);//se llama a la biseccion con los limites 0.008 y 1, se busca una presicion de 0.001
+   fout<<"friction factor using darcy: "<<darcy()<<endl;
+   bisection(0.008,0.1,0.001);//se llama a la biseccion con los limites 0.008 y 1, se busca una presicion de 0.001
    cout<<endl;
    fout<<endl;
 }

@@ -1,2 +1,11 @@
-Reynolds number is = 0.353678
-Reynolds number represents a laminar fluid which friction factor is= 180.956
+Reynolds number is = 945445
+Reynolds factor represents a turbulent flux, the friction factor of this flux is 
+friction factor using darcy: 0.0117128
+ iteration #1 of c: 0.054
+ iteration #2 of c: 0.031
+ iteration #3 of c: 0.0195
+ iteration #4 of c: 0.01375
+ iteration #5 of c: 0.016625
+ iteration #6 of c: 0.0151875
+ iteration #7 of c: 0.0159063
+ friction factor = 0.0159063
